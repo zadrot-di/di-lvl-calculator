@@ -269,6 +269,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const langBtn = document.getElementById("lang-btn");
   const langMenu = document.getElementById("lang-menu");
   const flags = langMenu.querySelectorAll("img");
+  const lang = getLang();
+  applyTranslations(lang);
+  App.ui.updateBpCostDisplay();
+  App.utils.load();
+  App.ui.recalc();
 
   // Toggle menu visibility
   langBtn.addEventListener("click", () => {
@@ -288,6 +293,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const lang = flag.dataset.lang;
       setLang(lang); 
       applyTranslations(lang);
+      App.ui.updateBpCostDisplay();
+      App.ui.recalc(); 
       langMenu.classList.remove("show");
     });
   });
