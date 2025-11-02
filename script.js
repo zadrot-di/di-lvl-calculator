@@ -186,7 +186,7 @@ const App = {
                 `Level ${s.level} (penalty ${s.penalty * 100}%): used ${fmt(s.usedExp)} exp`
             ).join('<br>');
 
-            document.getElementById('full-calc-result').innerHTML += `
+            document.getElementById('full-calc-result').innerHTML = `
             <div class="result-section">
                 <h3>${t("resultsmoreBP")}</h3>
                 <ul>
@@ -286,32 +286,33 @@ document.addEventListener("DOMContentLoaded", () => {
   flags.forEach(flag => {
     flag.addEventListener("click", () => {
       const lang = flag.dataset.lang;
-      setLang(lang); // твоя функция из i18n.js
+      setLang(lang); 
+      applyTranslations(lang);
       langMenu.classList.remove("show");
     });
   });
 
   // Apply translations on page load
-  applyTranslations();
+  applyTranslations(getLang());
 });
 
 // === Counting and BuyMeACoffee ===
 const siteKey = 'zadrot-di-calculator'; 
 
 // Total
-fetch(`https://api.countapi.xyz/hit/${siteKey}/total`)
+fetch(`https://api.counterapi.dev/v1/${siteKey}/total/up`)
   .then(res => res.json())
   .then(data => document.getElementById('count-total').textContent = data.value);
 
 // Today
 const todayKey = new Date().toISOString().slice(0,10); // yyyy-mm-dd
-fetch(`https://api.countapi.xyz/hit/${siteKey}/${todayKey}`)
+fetch(`https://api.counterapi.dev/v1/${siteKey}/${todayKey}/up`)
   .then(res => res.json())
   .then(data => document.getElementById('count-today').textContent = data.value);
 
 // Year
 const yearKey = new Date().getFullYear();
-fetch(`https://api.countapi.xyz/hit/${siteKey}/${yearKey}`)
+fetch(`https://api.counterapi.dev/v1/${siteKey}/${yearKey}/up`)
   .then(res => res.json())
   .then(data => document.getElementById('count-year').textContent = data.value);
 
