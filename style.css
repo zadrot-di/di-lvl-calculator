@@ -107,7 +107,7 @@ footer {
 
 /* -------- Guide info -------- */
 .help-modal {
-  display: none; /* скрыта по умолчанию */
+  display: none; 
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.65);
@@ -276,7 +276,7 @@ footer {
 
 .bp-progress-wrapper input {
   width: 100%;
-  padding-right: 2.2em; /* место под /N */
+  padding-right: 2.2em;
 }
 
 .bp-cost-display {
