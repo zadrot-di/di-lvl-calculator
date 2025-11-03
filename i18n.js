@@ -1,5 +1,3 @@
-// i18n.js — simple localization dictionary
-
 const i18n = {
   en: {
     // Headers
@@ -63,9 +61,6 @@ Romanych — <a href="https://www.youtube.com/watch?v=pIAANXuz4fE" target="_blan
     resultsmoreExpLvl: "XP distribution by levels",
 
     // top-bar
-    topbartoday: "Today",
-    topbaryear: "This Year",
-    topbartotal: "Total",
     topbarcoffee: "☕ Buy me a coffee",
   },
 
@@ -131,9 +126,6 @@ Romanych — <a href="https://www.youtube.com/watch?v=pIAANXuz4fE" target="_blan
     resultsmoreExpLvl: "Распределение опыта по уровням",
 
     // top-bar
-    topbartoday: "Сегодня",
-    topbaryear: "В этом году",
-    topbartotal: "Всего",
     topbarcoffee: "☕ Купить мне кофе",
   },
   fr: {
@@ -201,9 +193,6 @@ Romanych — <a href="https://www.youtube.com/watch?v=pIAANXuz4fE" target="_blan
     resultsmoreExpLvl: "Répartition de l’XP par niveau",
 
     // top-bar
-    topbartoday: "Aujourd'hui",
-    topbaryear: "Вette Année",
-    topbartotal: "Total",
     topbarcoffee: "☕ Offrez-moi un café",
   },
 };
@@ -223,16 +212,6 @@ function t(key) {
   return i18n[lang][key] || key;
 }
 
-// function applyTranslations() {
-//   document.querySelectorAll("[data-i18n]").forEach(el => {
-//     const key = el.dataset.i18n;
-//     if (el.placeholder !== undefined && el.tagName === "INPUT")
-//       el.placeholder = t(key);
-//     else
-//       el.textContent = t(key);
-//   });
-// }
-
 function applyTranslations(lang) {
   const elements = document.querySelectorAll('[data-i18n]');
   elements.forEach((el) => {
@@ -240,7 +219,6 @@ function applyTranslations(lang) {
     const value = i18n[lang][key];
     if (!value) return;
 
-    // bodyInstructions содержит HTML, поэтому вставляем innerHTML
     if (key === "bodyInstructions") {
       el.innerHTML = value;
     } else {
