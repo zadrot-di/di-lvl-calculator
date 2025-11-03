@@ -303,26 +303,6 @@ document.addEventListener("DOMContentLoaded", () => {
   applyTranslations(getLang());
 });
 
-// === Counting and BuyMeACoffee ===
-const siteKey = 'zadrot-di-calculator'; 
-
-// Total
-fetch(`https://api.counterapi.dev/v1/${siteKey}/total/up`)
-  .then(res => res.json())
-  .then(data => document.getElementById('count-total').textContent = data.value);
-
-// Today
-const todayKey = new Date().toISOString().slice(0,10); // yyyy-mm-dd
-fetch(`https://api.counterapi.dev/v1/${siteKey}/${todayKey}/up`)
-  .then(res => res.json())
-  .then(data => document.getElementById('count-today').textContent = data.value);
-
-// Year
-const yearKey = new Date().getFullYear();
-fetch(`https://api.counterapi.dev/v1/${siteKey}/${yearKey}/up`)
-  .then(res => res.json())
-  .then(data => document.getElementById('count-year').textContent = data.value);
-
 
 // === Initialization ===
 App.utils.load();
